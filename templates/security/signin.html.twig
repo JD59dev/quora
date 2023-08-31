@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Connexion
+{% endblock title %}
+
+{% block body %}
+<div class="block">
+    <h2 class="pb-30">Connexion</h2>
+    <form action="{{path('signin')}}" method="post"> {# Champs du formaulaire #}
+        <div class="form-row">
+            <label for="email">
+                Email
+            </label>
+            <input type="text" name="_username" id="email">
+        </div>
+
+        <div class="form-row">
+            <label for="password">
+                Mot de passe
+            </label>
+            <input type="password" name="_password" id="password">
+        </div>
+
+        <div class="form-row">
+            <label for="remember_me">
+                <input type="checkbox" name="_remember_me" id="remember_me">
+                Se souvenir de moi
+            </label>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}"> {# Jeton CSRF pour se protéger de la faille #}
+        {% if err %}
+            <ul class="form-errors">
+                <li>{{err.messageKey | trans(err.messageData, 'security')}}</li> {# Affichage d'erreurs #}
+            </ul>
+        {% endif %}
+        <div class="d-flex flex-row">
+            <button class="btn btn-primary mr-5">Connexion</button>
+            <div class="d-flex flex-column">
+                <small>
+                    <a href="{{path('signup')}}">Pas encore de compte ?</a> {# Page d'inscription (signup) #}
+                </small>
+                <small>
+                    <a href="{{path('reset-password-request')}}">Mot de passe oublié ?</a> {# Page d'inscription (signup) #}
+                </small>
+            </div>
+        </div>
+    </form>
+</div>
+    
+{% endblock body %}

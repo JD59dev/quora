@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Mes Réponses
+{% endblock title %}
+
+{% block body %}
+    <div class="block mb-20">
+        <h3 class="pb-30">Mes Réponses</h3>
+        <ul>
+            {% for comment in app.user.comments %} 
+                <li class="pb-30">{{comment.content | slice(0, 50)}}</li>
+                {# Affichage des 50 premiers caractères si le commentaire est trop long #}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock body %}

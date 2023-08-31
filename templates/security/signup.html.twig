@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Inscription
+{% endblock title %}
+
+{% block body %}
+    <div class="block">
+        <h2 class="pb-30">Inscription</h2>
+        {{form_start(form)}}
+        {{form_rest(form)}}
+        <button class="btn btn-primary mr-5">Inscription</button>
+        <small>
+            <a href="{{path('signin')}}">Vous avez déjà un compte ?</a> {# Page de connexion (signup) #}
+        </small>
+        {{form_end(form)}}
+    </div>
+{% endblock body %}

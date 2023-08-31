@@ -1,0 +1,7 @@
+{% for cat, list in app.flashes %} {# On va parcourir à la fois les catégories (success ? warning ?) et les listes #}
+            {% for message in list %}
+                <div class="flash flash-{{cat}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endfor %}

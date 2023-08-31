@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/style.css')}}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        {% endblock %}
+
+        {% block javascripts %}
+
+        {% endblock %}
+    </head>
+    <body class="d-flex flex-column">
+        {% include "partials/_header.html.twig" %}
+        {% include "partials/_flashes.html.twig" %}
+        <div class="app-content flex-fill d-flex flex-row-nowrap justify-content-center">
+            <div class="content flex-fill d-flex flex-row-nowrap py-50">
+                {% include "partials/_sidebar.html.twig" %}
+                <div class="flex-fill">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        {% include "partials/_footer.html.twig" %}
+    </body>
+</html>

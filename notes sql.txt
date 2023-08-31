@@ -1,0 +1,9 @@
+CREATE EVENT ClearExpiredTokens
+ON SCHEDULE EVERY 1 DAY
+COMMENT 'Nettoie la table reset_password tous les jours'
+DO
+DELETE FROM quora.reset_password WHERE expired_at < NOW();
+
+-> créé un événement qui videra la table reset_password tous les jours où les dates d'expirations ont été dépassées.
+
+Pour retoruver les événements créés : Choix d'une BDD -> Rubrique Évènements

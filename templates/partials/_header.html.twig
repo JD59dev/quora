@@ -1,0 +1,25 @@
+<header class="d-flex flex-row-nowrap justify-content-center p-20">
+    <div class="content flex-fill d-flex flex-row-nowrap justify-content-between align-items-center">
+        <a class="header-logo" href="{{path('home')}}">
+            <img src="{{asset('img/logo.png')}}" alt="" class="header-logo">
+        </a>
+        <div class="header-search p-10 flex-fill">
+            <i class="fas fa-search"></i>
+
+            <input type="text" name="" id="">
+        </div>
+        <div class="">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} {# Si l'utilsateur est connecté #}
+            <div class="d-flex align-items-center">
+                <a href="{{path('current_user')}}">
+                    <img src="{{asset(app.user.avatar)}}" alt="Avatar" class="avatar-lg mr-5">
+                </a>
+                <p> {{app.user.firstname}} {{app.user.lastname}}</p>
+            </div>
+            {% else %}
+                <a href="{{path('signup')}}" class="btn btn-primary">Inscription</a>
+                <a href="{{path('signin')}}" class="btn btn-primary-stroke">Connexion</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

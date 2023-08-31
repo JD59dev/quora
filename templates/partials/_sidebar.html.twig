@@ -1,0 +1,30 @@
+<div class="sidebar d-flex flex-column mr-50">
+    <a href="{{path('question_ask')}}" class="btn btn-primary">
+        <i class="fas fa-question mr-5"></i>
+        <span>Poser une question</span>
+    </a>
+    <ul class="sidebar-nav py-20">
+        <a href="{{path('home')}}" class="active">
+            <i class="fas fa-home mr-5"></i>Liste des questions
+        </a>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <a href="{{path('show_questions')}}" {% if app.request.pathinfo == path('show_questions') %}
+                class="active"
+            {% endif %} >
+                <i class="fas fa-pen mr-5"></i>Mes questions
+            </a>
+            
+            <a href="{{path('show_comments')}}" {% if app.request.pathinfo == path('show_comments') %}
+            class="active"
+        {% endif %} >
+                <i class="fas fa-puzzle-piece mr-5"></i>Mes réponses
+            </a>
+        {% endif %}
+        {% if app.user %} {# Si l'utilisateur est connecté (session stocké dans l'application) #}
+            <a href="{{path('logout')}}">
+                <i class="fa-solid fa-right-from-bracket mr-5"></i>Déconnexion
+            </a>
+        {% endif %}
+    </ul>
+</div>

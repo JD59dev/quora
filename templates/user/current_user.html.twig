@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{app.user.firstname}} {{ app.user.lastname }} {% endblock %}
+
+{% block body %}
+    <div class="block">
+        <h2 class="pb-30">Profil de {{app.user.firstname}} {{app.user.lastname}}</h2>
+        {{form_start(form)}}
+            {{form_rest(form)}}
+            <button class="btn btn-primary">Sauvegarder</button>
+        {{form_end(form)}}
+    </div>
+{% endblock %}

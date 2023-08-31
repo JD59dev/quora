@@ -1,0 +1,5 @@
+framework: # mailer.yaml est créé après l'installation du composant Mailer
+  mailer:
+    dsn: "%env(MAILER_DSN)%"
+    headers:
+      from: "Jason <no-replay@quora.com>" # Configuration de l'expéditeur de l'email de bienvenue
