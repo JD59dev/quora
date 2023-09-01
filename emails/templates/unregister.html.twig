@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?
+        family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/
+        6.1.1/css/all.min.css" integrity="sha512-
+        KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqX
+        gel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        {% apply inline_css(source('@email_css/email.css')) %} {# Le css_inliner de Twig est nécessaire (res twig/cssinliner-extra), sinon ce sera ignoré #}
+        <h1>Bonjour {{username}},</h1>
+        <p>Vous recevez cet e-mail pour vous confirmer votre désinscription.</p>
+        <p>Nous sommes désolés de votre départ et nous espérons vous revoir bientôt sur Quora !</p>
+        <p>À bientôt !</p>
+        {% endapply %}
+    </body>
+</html>

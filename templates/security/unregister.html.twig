@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %} {% block title %} Confirmez votre désinscription
+{% endblock title %} {% block body %}
+<div class="block">
+  <h2 class="text-center mb-20">
+    Souhaitez-vous vraiment vous désinscrire de Quora ?
+  </h2>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-warning mr-10">
+      <a href="{{ path('goodbye', { id: app.user.id }) }}">Oui</a>
+    </button>
+    <button class="btn btn-warning-stroke ml-10">
+      <a href="{{ path('current_user') }}">Non</a>
+    </button>
+  </div>
+</div>
+{% endblock body %}

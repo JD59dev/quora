@@ -99,6 +99,34 @@ class SecurityController extends AbstractController
     {
     }
 
+    #[Route('/unregister', name: 'unregister')]
+    public function unregister(User $user)
+    { // Page de désinscription
+        return $this->render('security/unregister.html.twig', [
+            'user' => $user
+        ]);
+    }
+
+    #[Route('/goodbye/{id}', name: 'goodbye')]
+    public function goodbye(User $user, UserRepository $userRepo, MailerInterface $mailer)
+    { // Script de désinscription
+        $email = new TemplatedEmail(); // Nouveau template de mail
+        $email->to($user->getEmail())
+            ->subject('Confirmation de votre désinscription') // objet de l'email
+            ->htmlTemplate('@email_templates/unregister.html.twig') // Choix du template de l'email
+            ->context([
+                'username' => $user->getFirstname() // Ajout du username dans le corps du mail
+            ]);
+        $mailer->send($email); // envoi
+
+        $userRepo->confirmUnregister($user->getId()); // UserRepository : requête effaçant les données de l'utilsateur souhaite se désinscrire
+
+        $this->addFlash('success', 'Votre désinscription est confirmée. À bientôt sur Quora !');
+        // Message de confirmation
+
+        return $this->redirectToRoute('home'); // Redirection vers la page d'accueil
+    }
+
     #[Route('/reset-password-request', name: 'reset-password-request')]
     public function resetPasswordRequest(Request $request, UserRepository $userRepo, ResetPasswordRepository $resetPasswordRepo, EntityManagerInterface $em, MailerInterface $mailer, RateLimiterFactory $passwordRecoveryLimiter)
     { // UserRepository est nécessaire pour la réinitialisation du mot de passe

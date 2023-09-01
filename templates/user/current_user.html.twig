@@ -7,7 +7,10 @@
         <h2 class="pb-30">Profil de {{app.user.firstname}} {{app.user.lastname}}</h2>
         {{form_start(form)}}
             {{form_rest(form)}}
-            <button class="btn btn-primary">Sauvegarder</button>
+            <button class="btn btn-primary mb-10">Sauvegarder</button>
         {{form_end(form)}}
+        <button class="btn btn-warning">
+            <a href="{{path('unregister')}}">Se désinscrire</a>
+        </button>
     </div>
 {% endblock %}
